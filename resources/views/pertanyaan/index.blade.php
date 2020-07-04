@@ -16,7 +16,7 @@
                         <th style="width: 10px">#</th>
                         <th>Judul</th>
                         <th>Isi</th>
-                        <th style="width: 40px">Jawab</th>
+                        <th style="width: 276px">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -26,7 +26,16 @@
                                 <td>{{ $tanya->judul }}</td>
                                 <td>{{ $tanya->isi }}</td>
                                 <input type="hidden" class="form-control" value="{{ $tanya->id }}" id="pertanyaan_id" name="pertanyaan_id">
-                                <td><a href="/jawaban/{{ $tanya->id }}" class="btn btn-primary">Jawab</a></td>
+                                <td>
+                                    <a href="/jawaban/{{ $tanya->id }}" class="btn btn-sm btn-primary">Jawab</a>
+                                    <a href="/pertanyaan/{{ $tanya->id }}" class="btn btn-sm btn-info">Tampilkan</a>
+                                    <a href="/pertanyaan/{{ $tanya->id }}/edit" class="btn btn-sm btn-default">Sunting</a>
+                                    <form action="/pertanyaan/{{ $tanya->id }}" method="POST" style="display: inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

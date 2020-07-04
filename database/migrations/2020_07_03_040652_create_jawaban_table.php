@@ -22,7 +22,7 @@ class CreateJawabanTable extends Migration
             $table->integer('vote')->nullable();
             $table->binary('best_answer')->nullable();
             $table->unsignedBigInteger('pertanyaan_id');
-            $table->foreign('pertanyaan_id')->references('id')->on('pertanyaan');
+            $table->foreign('pertanyaan_id')->references('id')->on('pertanyaan')->onDelete('cascade');
         });
     }
 
